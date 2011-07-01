@@ -1,0 +1,57 @@
+<project name="stockmarket" default="compile" basedir=".">
+
+    <property name="src" value="${basedir}/src/"/>
+    <property name="config" value="${basedir}/config"/>
+    <property name="classes" value="${basedir}/config/WEB-INF/classes"/>
+    <property name="pages" value="${basedir}/pages"/>
+	<property name="lib" value="${basedir}/config/WEB-INF/lib"/>
+    <property name="warDir" value="${basedir}/war"/>
+    <property name="warFile" value="stockmarket.war"/>
+    <property name="hibernateFile" value="hibernate.cfg.xml"/>
+	<property name="log4jFile" value="log4j.properties"/>
+    <property name="tomcatDir" value="/usr/local/apache-tomcat-7.0.8/"/>
+
+    <path id="classpath">
+        <fileset dir="${lib}" includes="**/*.jar"/>
+		<fileset dir="${tomcatDir}/lib" includes="**/*.jar"/>
+    </path>
+
+	<target name="compile" depends="clean">
+		<mkdir dir="${classes}"/>
+		<javac srcdir="${src}" destdir="${classes}" debug="true" includes="**/*.java">
+			<classpath refid="classpath"/>
+		</javac>
+	</target>
+
+	<target name="deploy" depends="war">
+		<copy todir="${tomcatDir}/webapps">
+		   <fileset dir="${basedir}" includes="${warFile}" /> 
+	    </copy>
+	</target>
+
+
+	<target name="war" depends="compile">
+		<mkdir dir="${warDir}"/>
+		<copy todir="${classes}">
+			<fileset dir="${config}" includes="${hibernateFile}"/>
+	    </copy>
+		<copy todir="${classes}">
+			<fileset dir="${config}" includes="${log4jFile}"/>
+	    </copy>
+		<copy todir="config/WEB-INF/classes/org/usp/stockmarket/bundles/">
+			<fileset dir="src/org/usp/stockmarket/bundles/" includes="*.*"/>
+	    </copy>
+		<copy todir="${warDir}">
+		   <fileset dir="${config}" includes="**/*.*" /> 
+		   <fileset dir="${pages}" includes="**/*.*" />
+		</copy>
+	    <jar jarfile="${basedir}/${warFile}" basedir="${warDir}" />
+	</target>
+
+
+	<target name="clean" >
+		<delete file="${basedir}/${warFile}"/>
+		<delete dir="${warDir}"/>
+		<delete dir="${classes}"/>
+	</target>
+</project>

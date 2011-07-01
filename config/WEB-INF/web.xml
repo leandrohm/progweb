@@ -1,0 +1,40 @@
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" version="2.4"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http:/java.sun.com/dtd/web-app_2_3.dtd">
+  <servlet>
+    <servlet-name>userservlet</servlet-name>
+    <servlet-class>org.usp.stockmarket.servlets.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>userservlet</servlet-name>
+    <url-pattern>/userservlet</url-pattern>
+  </servlet-mapping>
+
+ <servlet>
+    <servlet-name>webquoteservlet</servlet-name>
+    <servlet-class>org.usp.stockmarket.servlets.WebQuoteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>webquoteservlet</servlet-name>
+    <url-pattern>/webquoteservlet</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+    <servlet-name>bankservlet</servlet-name>
+    <servlet-class>org.usp.stockmarket.servlets.BankServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>bankservlet</servlet-name>
+    <url-pattern>/bankservlet</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+    <servlet-name>transservlet</servlet-name>
+    <servlet-class>org.usp.stockmarket.servlets.TransServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>transservlet</servlet-name>
+    <url-pattern>/transservlet</url-pattern>
+  </servlet-mapping>
+
+</web-app>

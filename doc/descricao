@@ -1,0 +1,25 @@
+As TRANSACOES são de compra e venda de açoes e EMPRESTIMOS(LOAN)
+
+			TRANSACTION(transacao)
+				valor
+
+
+LOAN(emprestimo)				INVESTMENT(investiment)
+juros								compra(decremento o saldo do usuario)
+									venda(incremento o saldo do usuario)
+
+
+
+tick - tempo momentaneo de captura das acoes
+Classe TRANSACTION - transacao financeira
+
+Vender a ação:
+	1- Banco compra a um preço abaixo
+	ou
+	2- Lança a ação para pessoas comprarem no precço que quiser
+
+Apriori nao é obrigatorio a contagem dos papeis
+
+Preços Historicos
+XXX - acao correspondente
+http://br.finance.yahoo.com/q/hp?s=XXX
